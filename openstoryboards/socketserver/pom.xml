@@ -1,0 +1,118 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+   <packaging>war</packaging>
+  
+   <parent>
+	<artifactId>all</artifactId>
+	<groupId>org.openstoryboards</groupId>
+	<version>0.0.1-SNAPSHOT</version>
+   </parent>
+    
+   <artifactId>socketserver</artifactId>
+   <name>openstoryboards Socketserver</name>
+   <description>image editing server</description>
+   
+   
+   	<dependencies>
+   		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.4</version>
+		</dependency>
+        <dependency>
+        	<groupId>org.eclipse.jetty</groupId>
+        	<artifactId>jetty-servlet</artifactId>
+        	<version>8.1.3.v20120416</version>
+        </dependency>
+       
+        <dependency>
+        	<groupId>org.eclipse.jetty</groupId>
+        	<artifactId>jetty-websocket</artifactId>
+        	<version>8.1.3.v20120416</version>
+        </dependency>
+
+        <dependency>
+        	<groupId>org.eclipse.jetty</groupId>
+        	<artifactId>jetty-client</artifactId>
+        	<version>8.1.3.v20120416</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.eclipse.jetty</groupId>
+        	<artifactId>jetty-continuation</artifactId>
+        	<version>8.1.3.v20120416</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.eclipse.jetty</groupId>
+        	<artifactId>jetty-http</artifactId>
+        	<version>8.1.3.v20120416</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.eclipse.jetty</groupId>
+        	<artifactId>jetty-io</artifactId>
+        	<version>8.1.3.v20120416</version>
+        </dependency>
+
+        <dependency>
+        	<groupId>org.eclipse.jetty</groupId>
+        	<artifactId>jetty-security</artifactId>
+        	<version>8.1.3.v20120416</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.eclipse.jetty</groupId>
+        	<artifactId>jetty-server</artifactId>
+        	<version>8.1.3.v20120416</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.eclipse.jetty</groupId>
+        	<artifactId>jetty-servlets</artifactId>
+        	<version>8.1.3.v20120416</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.eclipse.jetty</groupId>
+        	<artifactId>jetty-util</artifactId>
+        	<version>8.1.3.v20120416</version>
+        </dependency>
+        <dependency>
+        	<groupId>com.google.code.gson</groupId>
+        	<artifactId>gson</artifactId>
+        	<version>2.2.1</version>
+        </dependency>
+   	</dependencies>
+  
+  
+   <build>
+        <!-- Maven will append the version to the finalName (which is the 
+            name given to the generated war, and hence the context root) -->
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <!-- Compiler plugin enforces Java 1.6 compatibility and activates 
+                annotation processors -->
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <!-- Java EE 6 doesn't require web.xml, Maven needs to 
+                        catch up! -->
+                         <packagingExcludes>WEB-INF/lib/javax.servlet-3.0.*.jar</packagingExcludes>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <!-- The JBoss AS plugin deploys your war to a local JBoss AS 
+                container -->
+            <!-- To use, run: mvn package jboss-as:deploy -->
+            <plugin>
+                <groupId>org.jboss.as.plugins</groupId>
+                <artifactId>jboss-as-maven-plugin</artifactId>
+                </plugin>
+        </plugins>
+    </build>
+    
+   
+</project>

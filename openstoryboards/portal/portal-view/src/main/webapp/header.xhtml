@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+	<div style="color: #FFFFFF;">
+		<h:panelGrid style=" width: 1024px">
+			<div class="banner" />
+
+			<h:panelGrid columns="6"  style="float: right;">
+				<h:link value="Register" outcome="register"/>
+				
+				<h:link value="Quickstart" outcome="start"/>
+
+
+				<div style="float: right;">
+					<h:form>
+						<h:panelGroup rendered="#{not identity.loggedIn}">
+							<h:inputText style="width:100px;" value="#{credentials.username}" />
+							<h:inputSecret style="width:100px;"
+								value="#{credentials.password}" />
+							<h:commandButton action="#{loginForm.login}" value="Login" />
+						</h:panelGroup>
+
+						<h:panelGroup rendered="#{identity.loggedIn}">
+							<h:outputText value="Logged in as #{credentials.username}"
+								style="color:Black" />
+					&#160;
+					<h:commandButton action="#{loginForm.logout}" value="Logout" />
+						</h:panelGroup>
+					</h:form>
+				</div>
+
+			</h:panelGrid>
+
+		</h:panelGrid>
+
+	</div>
+</ui:composition>

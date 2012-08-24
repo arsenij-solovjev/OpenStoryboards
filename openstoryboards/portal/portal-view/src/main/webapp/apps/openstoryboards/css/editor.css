@@ -1,0 +1,230 @@
+@editorBackgroundColor: gray;
+@editorBorderColor:     black;
+@editorBorder:          1px @editorBorderColor solid;
+@loggerHeight:          200px;
+@loggerHeaderHeight:    20px;
+@loggerBodyHeight:      @loggerHeight - @loggerHeaderHeight;
+
+html, html body {
+	height: 100%;	
+	margin: 0px;
+}
+
+/*--- LOGGER ----------------------------------------*/
+.openstoryboards-logger {
+	position: fixed;
+	color: white;
+	z-index: 1000000000;
+	right: 0px;
+	bottom: 0px;	
+	width: 400px;
+	height: @loggerHeight;
+	font-family: sans-serif;
+	border: 1px black solid;
+	background-color: #555555;
+	display: none;
+}
+
+.openstoryboards-logger-header {
+	font-weight: bold;
+	font-size: 12px;
+	background-color: black;
+	height: @loggerHeaderHeight;
+}
+
+.openstoryboards-logger-body {
+	font-weight: normal;
+	font-size: 10px;
+	overflow: auto;
+	height: @loggerBodyHeight;
+}
+
+.openstoryboards-logger-debug {
+	color: #AAAAFF;
+	border-bottom: 1px solid blue;
+}
+
+.openstoryboards-logger-info {
+	color: white;
+	border-bottom: 1px solid white;
+}
+
+.openstoryboards-logger-error {
+	color: #FFAAAA;
+	border-bottom: 1px solid red;
+}
+/*--- WIDGETS ----------------------------------------*/
+.openstoryboards-widget-container {
+	position: relative;
+}
+
+.openstoryboards-widget-content {
+	position: absolute;	
+	width: 100%;
+	height: 100%;
+}
+
+.openstoryboards-widget-accordion {
+	width: 100%;
+	height: 100%;
+	color: white;
+}
+
+.openstoryboards-widget-accordion-header {
+	cursor: pointer;
+	padding: 0;
+	margin: 0;
+	background-color: #222222;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.openstoryboards-widget-accordion-body {
+	
+}
+
+.toolsbar {
+	
+}
+
+.toolsbar ul {
+	padding: 0px;
+	margin: 0px;
+	list-style-type: none;
+}
+
+.toolsbarButton {
+	cursor: pointer;	
+}
+
+/*--- LAYOUT ----------------------------------------*/
+.openstoryboards-editor {
+	font-family: sans-serif;
+	position: relative;
+	background-color: @editorBackgroundColor;
+	outline: @editorBorder;
+	color: white;
+}
+
+
+.openstoryboards-editor-top-area {
+	width: 100%;
+	height: 57px;
+	position: relative;
+}
+
+.openstoryboards-editor-middle-area {
+
+}
+
+.openstoryboards-editor-bottom-area {
+	width: 100%;
+	height: 200px;	
+}
+
+.openstoryboards-editor-sidebar {
+	height: 100%;
+	float: right;
+	width: 255px;
+}
+
+.openstoryboards-editor-toolsbar {
+	width: 40px;
+	height: 100%;
+	float: left;
+}
+
+/*--- OVERLAYS ----------------------------------------*/
+.openstoryboards-editor-lock-screen {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	opacity: 0.75;
+	background-color: black;
+	color: white;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: center;
+	vertical-align: middle;
+	display: none;
+	z-index: 1000000;
+}
+
+/*--- TOOLS ----------------------------------------*/
+
+.openstoryboards-editor-tool {
+	margin: 4px;
+	width: 32px;
+	height: 32px;
+}
+
+.openstoryboards-editor-tool-selected {
+	outline: 1px solid @editorBorderColor;
+}
+
+.openstoryboards-editor-tool-pencil-icon {
+	background-image: url('../img/pencil-icon.png');
+}
+.openstoryboards-editor-tool-pencil-cursor {
+	cursor: crosshair; /*TODO*/
+}
+
+.openstoryboards-editor-tool-brush-icon {
+	background-image: url('../img/brush-icon.png');
+}
+.openstoryboards-editor-tool-brush-cursor {
+	cursor: crosshair; /*TODO*/
+}
+
+.openstoryboards-editor-tool-eraser-icon {
+	background-image: url('../img/eraser-icon.png');
+}
+.openstoryboards-editor-tool-eraser-cursor {
+	cursor: crosshair; /*TODO*/
+}
+
+.openstoryboards-editor-tool-eyedropper-icon {
+	background-image: url('../img/eyedropper-icon.png');
+}
+.openstoryboards-editor-tool-eyedropper-cursor {
+	cursor: crosshair; /*TODO*/
+}
+
+/*--- USERLIST ----------------------------------------*/
+.openstoryboards-editor-userlist {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.openstoryboards-editor-userlist-item {
+	color: white;
+	padding: 3px;
+	border-bottom: gray 1px solid;
+}
+
+.openstoryboards-editor-userlist-online {
+	background-color: #225522;	
+}
+
+.openstoryboards-editor-userlist-offline {
+	background-color: #552222;	
+}
+
+/*--- canvas ----------------------------------------*/
+.openstoryboards-editor-canvas-container {
+	outline: @editorBorder;
+	height: 100%;
+	overflow: auto;
+	float: left;
+	position: relative;
+}
+
+.openstoryboards-editor-layer-acked-canvas, 
+.openstoryboards-editor-layer-unacked-canvas {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}

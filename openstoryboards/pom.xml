@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.openstoryboards</groupId>
+	<artifactId>all</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>openstoryboards Parent</name>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<javaee6.web.spec.version>2.0.0.Final</javaee6.web.spec.version>
+		<hibernate.jpamodelgen.version>1.2.0.CR1</hibernate.jpamodelgen.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>org.openstoryboards</groupId>
+				<artifactId>portal</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<type>ear</type>
+			</dependency>
+			
+			<dependency>
+				<groupId>org.openstoryboards</groupId>
+				<artifactId>socketserver</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<type>war</type>
+				<scope>compile</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+
+
+	<build>
+		<pluginManagement>
+			<plugins>
+
+				<!-- The JBoss AS plugin deploys your ear to a local JBoss AS container -->
+				<!-- Due to Maven's lack of intelligence with EARs we need to configure
+					the jboss-as maven plugin to skip deployment for all modules. We then enable
+					it specifically in the ear module. -->
+				<plugin>
+					<groupId>org.jboss.as.plugins</groupId>
+					<artifactId>jboss-as-maven-plugin</artifactId>
+					<version>7.1.0.Beta1b</version>
+					<inherited>true</inherited>
+					
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+  <modules>
+    <module>portal</module>
+    <module>socketserver</module>
+  </modules>
+</project>
