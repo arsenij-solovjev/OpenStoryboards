@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Class-Path: jasypt-1.9.0.jar picketlink-idm-api-1.5.0.Alpha02.jar pick
- etlink-idm-common-1.5.0.Alpha02.jar log4j-1.2.14.jar
-Build-Jdk: 1.6.0_24
-Built-By: arsenij
-Created-By: Maven Integration for Eclipse
-
