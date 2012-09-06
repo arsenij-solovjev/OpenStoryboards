@@ -17,12 +17,12 @@
 
 		<dependency>
 			<groupId>org.openstoryboards</groupId>
-			<artifactId>portal-model</artifactId>
+			<artifactId>portal-entities</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>org.openstoryboards</groupId>
-			<artifactId>portal-controller</artifactId>
+			<artifactId>portal-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>
 
@@ -53,7 +53,7 @@
 		<!-- Test scope dependencies -->
 		<dependency>
 			<groupId>org.openstoryboards</groupId>
-			<artifactId>portal-model</artifactId>
+			<artifactId>portal-entities</artifactId>
 			<type>test-jar</type>
 			<scope>test</scope>
 		</dependency>

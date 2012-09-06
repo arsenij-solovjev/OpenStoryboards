@@ -8,7 +8,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>portal-controller</artifactId>
+	<artifactId>portal-ejb</artifactId>
 	<packaging>ejb</packaging>
 
 	<name>portal EJB Controller module</name>
@@ -17,7 +17,7 @@
 
 		<dependency>
 			<groupId>org.openstoryboards</groupId>
-			<artifactId>portal-model</artifactId>
+			<artifactId>portal-entities</artifactId>
 		</dependency>
 
 		<dependency>
@@ -47,7 +47,7 @@
 		<!-- Test scope dependencies -->
 		<dependency>
 			<groupId>org.openstoryboards</groupId>
-			<artifactId>portal-model</artifactId>
+			<artifactId>portal-entities</artifactId>
 			<type>test-jar</type>
 			<scope>test</scope>
 		</dependency>

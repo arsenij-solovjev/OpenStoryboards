@@ -9,7 +9,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>portal-view</artifactId>
+	<artifactId>portal-web</artifactId>
 	<packaging>war</packaging>
 
 	<name>portal Web module</name>
@@ -19,7 +19,7 @@
 		<!-- Dependency on the EJB module so we can use it's services if needed -->
 		<dependency>
 			<groupId>org.openstoryboards</groupId>
-			<artifactId>portal-controller</artifactId>
+			<artifactId>portal-ejb</artifactId>
 			<type>ejb</type>
 			<scope>provided</scope>
 		</dependency>
@@ -64,7 +64,7 @@
 		<!-- Test scope dependencies -->
 		<dependency>
 			<groupId>org.openstoryboards</groupId>
-			<artifactId>portal-model</artifactId>
+			<artifactId>portal-entities</artifactId>
 			<type>test-jar</type>
 			<scope>test</scope>
 		</dependency>
