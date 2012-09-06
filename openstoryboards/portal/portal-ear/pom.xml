@@ -17,12 +17,12 @@
 
       <dependency>
          <groupId>org.openstoryboards</groupId>
-         <artifactId>portal-view</artifactId>
+         <artifactId>portal-web</artifactId>
          <type>war</type>
       </dependency>
       <dependency>
          <groupId>org.openstoryboards</groupId>
-         <artifactId>portal-controller</artifactId>
+         <artifactId>portal-ejb</artifactId>
          <type>ejb</type>
       </dependency>
 
@@ -34,7 +34,7 @@
 
       <dependency>
          <groupId>org.openstoryboards</groupId>
-         <artifactId>portal-model</artifactId>
+         <artifactId>portal-entities</artifactId>
          <type>jar</type>
       </dependency>
     
@@ -54,7 +54,7 @@
 
                   <webModule>
                      <groupId>org.openstoryboards</groupId>
-                     <artifactId>portal-view</artifactId>
+                     <artifactId>portal-web</artifactId>
                      <contextRoot>/portal</contextRoot>
                   </webModule>
 

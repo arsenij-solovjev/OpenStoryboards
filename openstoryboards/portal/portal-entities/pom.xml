@@ -8,7 +8,7 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>portal-model</artifactId>
+	<artifactId>portal-entities</artifactId>
 	<packaging>jar</packaging>
 
 	<name>portal JPA Datamodel module</name>

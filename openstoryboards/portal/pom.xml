@@ -24,14 +24,14 @@
 
 			<dependency>
 				<groupId>org.openstoryboards</groupId>
-				<artifactId>portal-model</artifactId>
+				<artifactId>portal-entities</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 				<type>jar</type>
 			</dependency>
 
 			<dependency>
 				<groupId>org.openstoryboards</groupId>
-				<artifactId>portal-model</artifactId>
+				<artifactId>portal-entities</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 				<type>test-jar</type>
 				<scope>test</scope>
@@ -39,7 +39,7 @@
 
 			<dependency>
 				<groupId>org.openstoryboards</groupId>
-				<artifactId>portal-controller</artifactId>
+				<artifactId>portal-ejb</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 				<type>ejb</type>
 			</dependency>
@@ -53,7 +53,7 @@
 
 			<dependency>
 				<groupId>org.openstoryboards</groupId>
-				<artifactId>portal-view</artifactId>
+				<artifactId>portal-web</artifactId>
 				<version>0.0.1-SNAPSHOT</version>
 				<type>war</type>
 				<scope>compile</scope>
@@ -296,10 +296,10 @@
  </profiles>
 
 	<modules>
-		<module>portal-model</module>
+		<module>portal-entities</module>
 		<module>portal-bootstrap</module>
-		<module>portal-controller</module>
-		<module>portal-view</module>
+		<module>portal-ejb</module>
+		<module>portal-web</module>
 		<module>portal-ear</module>
 
 	</modules>
