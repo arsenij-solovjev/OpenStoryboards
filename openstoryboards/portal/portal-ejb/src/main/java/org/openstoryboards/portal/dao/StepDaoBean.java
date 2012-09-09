@@ -20,5 +20,4 @@ import org.openstoryboards.portal.entity.User;
 @Stateless
 public class StepDaoBean extends AbstractDaoBean<Step> implements StepDao, Serializable {
 	private static final long serialVersionUID = -505877394989426923L;
-	
 }
