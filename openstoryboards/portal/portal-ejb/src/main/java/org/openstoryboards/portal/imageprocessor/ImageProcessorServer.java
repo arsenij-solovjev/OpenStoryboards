@@ -10,7 +10,12 @@ import javax.ejb.LockType;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import javax.ejb.Stateless;
+import javax.enterprise.context.spi.CreationalContext;
+import javax.enterprise.inject.spi.Bean;
+import javax.enterprise.inject.spi.BeanManager;
 import javax.inject.Inject;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
 
 import org.openstoryboards.portal.dao.ActionDao;
 import org.openstoryboards.portal.dao.PadHardVersionDao;
@@ -24,11 +29,30 @@ import org.openstoryboards.portal.entity.Pad;
 @Singleton
 @Startup
 public class ImageProcessorServer {
+	private static BeanManager getBeanManager() {
+		try {
+			InitialContext initialContext = new InitialContext();
+			return (BeanManager) initialContext.lookup("java:comp/BeanManager");
+		} catch (NamingException e) {
+			return null;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static ImageProcessor createImageProcessor() {
+		BeanManager bm = getBeanManager();
+		Bean<ImageProcessor> bean = (Bean<ImageProcessor>) bm.getBeans(ImageProcessor.class).iterator().next();
+		CreationalContext<ImageProcessor> ctx = bm.createCreationalContext(bean);
+	    ImageProcessor ip = (ImageProcessor) bm.getReference(bean, ImageProcessor.class, ctx);
+	    return ip;
+	}
+	
 	private static class PadData {
 		private ImageProcessor processor;
 		private Set<Long> connections = new HashSet<Long>();
-		public PadData(Pad pad, DaoCollection daos) {
-			processor = new ImageProcessor(pad, daos);
+		public PadData(Pad pad) {
+			processor = createImageProcessor();
+			processor.load(pad);
 		}
 		public ImageProcessor getProcessor() {
 			return processor;
@@ -40,12 +64,9 @@ public class ImageProcessorServer {
 	
 	private Map<Long, PadData> pads = new HashMap<Long, PadData>(); 
 	
-	@Inject
-	private DaoCollection daos;
-	
 	@Lock(LockType.WRITE)
 	public boolean login(Connection connection) {
-		PadData pd = new PadData(connection.getPad(), daos);
+		PadData pd = new PadData(connection.getPad());
 		pd.getConnections().add(connection.getId());
 		pads.put(connection.getPad().getId(), pd);
 		return true;

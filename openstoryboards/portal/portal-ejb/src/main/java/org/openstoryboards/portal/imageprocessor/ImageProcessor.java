@@ -1,17 +1,6 @@
 package org.openstoryboards.portal.imageprocessor;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.annotation.Resource;
-import javax.ejb.Stateful;
 import javax.inject.Inject;
-import javax.naming.Binding;
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NameClassPair;
-import javax.naming.NamingEnumeration;
-import javax.naming.NamingException;
 
 import org.openstoryboards.portal.dao.ActionDao;
 import org.openstoryboards.portal.dao.PadHardVersionDao;
@@ -19,13 +8,10 @@ import org.openstoryboards.portal.entity.Action;
 import org.openstoryboards.portal.entity.Connection;
 import org.openstoryboards.portal.entity.Pad;
 import org.openstoryboards.portal.entity.PadHardVersion;
-import org.openstoryboards.portal.entity.Step;
 import org.openstoryboards.portal.entity.User;
-import org.openstoryboards.portal.entity.enums.ActionType;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 
 public class ImageProcessor {
@@ -33,9 +19,17 @@ public class ImageProcessor {
 	private long version;
 	private Image image = new Image();
 	
-	public ImageProcessor(Pad pad, DaoCollection daos) {
+	@Inject
+	private ActionDao actionDao;
+	
+	@Inject 
+	private PadHardVersionDao versionDao;
+	
+	public ImageProcessor() {}
+	
+	public void load(Pad pad) {
 		//load last version
-		PadHardVersion hardVersion = daos.getHardVersonDao().getLastestVersion(pad);
+		PadHardVersion hardVersion = versionDao.getLastestVersion(pad);
 		if(!image.load(hardVersion.getPath()))
 			return; //TODO exception?
 		version = hardVersion.getVersion();
@@ -45,8 +39,8 @@ public class ImageProcessor {
 			;//apply((new JsonParser()).parse(action.getAction()));
 
 		//apply last actions
-		for(Action action: daos.getActionDao().getActionList(pad, version))
-			;//apply((new JsonParser()).parse(action.getAction()));
+		for(Action action: actionDao.getActionList(pad, version))
+			;//apply((new JsonParser()).parse(action.getAction()));		
 	}
 	
 	/**
