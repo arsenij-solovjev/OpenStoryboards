@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.UniformInterfaceException;
 import com.sun.jersey.api.client.WebResource;
+import com.sun.jersey.core.util.Base64;
 
 public final class ReadyState extends State {
   private static class Error {
@@ -25,10 +26,10 @@ public final class ReadyState extends State {
     WebResource imageService = webClient.resource(Config.IMAGE_APPLY_URL);
     imageService = imageService
     	.queryParam("accessToken", connection.getAccessToken())
-    	.queryParam("action", message);
+    	.queryParam("action", new String(Base64.encode(message)));
     String response = "";
     try {
-    	response = imageService.post(String.class);
+    	response = imageService.get(String.class);
     } catch(UniformInterfaceException e) {
     	//TODO write a more meaningful message
     	connection.send(new Gson().toJson(new Error("Unable to write action.")));
