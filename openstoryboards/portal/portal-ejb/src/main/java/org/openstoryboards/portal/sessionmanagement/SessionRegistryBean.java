@@ -1,4 +1,4 @@
-package org.openstoryboards.portal.sessions;
+package org.openstoryboards.portal.sessionmanagement;
 
 import java.util.HashMap;
 import java.util.logging.Logger;
@@ -11,11 +11,15 @@ import org.openstoryboards.portal.entity.User;
 @ApplicationScoped
 public class SessionRegistryBean implements SessionRegistry {
 	
-	@Inject private Logger log;
+	@Inject Logger log;
 	
 	HashMap<String, User> sessionToUser = new HashMap<String,User>();
 	
-	
+	@Override
+	public HashMap<String, User> getSessionToUser() {
+		return sessionToUser;
+	}
+
 	@Override
 	public void add(String sessionId, User user) {
 		sessionToUser.put(sessionId, user);

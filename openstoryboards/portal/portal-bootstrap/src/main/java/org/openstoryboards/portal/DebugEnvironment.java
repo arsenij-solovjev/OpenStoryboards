@@ -11,7 +11,7 @@ import org.openstoryboards.portal.dao.PadDao;
 import org.openstoryboards.portal.dao.UserDao;
 import org.openstoryboards.portal.entity.Pad;
 import org.openstoryboards.portal.entity.User;
-import org.openstoryboards.portal.sessions.SessionRegistry;
+import org.openstoryboards.portal.sessionmanagement.SessionRegistry;
 
 @Stateless
 public class DebugEnvironment {

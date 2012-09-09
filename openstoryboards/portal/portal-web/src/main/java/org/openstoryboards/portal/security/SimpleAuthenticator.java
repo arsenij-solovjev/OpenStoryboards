@@ -17,7 +17,7 @@ import org.jboss.seam.security.Credentials;
 import org.jboss.seam.security.Identity;
 import org.openstoryboards.portal.dao.UserDao;
 import org.openstoryboards.portal.entity.User;
-import org.openstoryboards.portal.sessions.SessionRegistry;
+import org.openstoryboards.portal.sessionmanagement.SessionRegistry;
 import org.picketlink.idm.impl.api.PasswordCredential;
 import org.picketlink.idm.impl.api.model.SimpleUser;
 
