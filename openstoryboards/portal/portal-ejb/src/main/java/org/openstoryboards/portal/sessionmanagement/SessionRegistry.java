@@ -1,4 +1,6 @@
-package org.openstoryboards.portal.sessions;
+package org.openstoryboards.portal.sessionmanagement;
+
+import java.util.HashMap;
 
 import org.openstoryboards.portal.entity.User;
 /**
@@ -10,4 +12,5 @@ public interface SessionRegistry {
 	void add(String sessionId, User user); 
 	User getUserBySessionId(String sessionId);
 	void remove(String sessionId);
+	HashMap<String, User> getSessionToUser();
 }

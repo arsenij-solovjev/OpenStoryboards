@@ -24,7 +24,7 @@ import org.openstoryboards.portal.entity.PadHardVersion;
 import org.openstoryboards.portal.entity.Step;
 import org.openstoryboards.portal.entity.User;
 import org.openstoryboards.portal.imageprocessor.ImageProcessorServer;
-import org.openstoryboards.portal.sessions.SessionRegistry;
+import org.openstoryboards.portal.sessionmanagement.SessionRegistry;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
